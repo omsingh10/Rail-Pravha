@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Rail-Pravah Design System - Railway Control Dashboard */
+
+@layer base {
+  :root {
+    /* Railway Control Theme - Dark Professional */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 40% 95%;
+
+    /* Railway Blue Primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 70%;
+
+    /* Control Panel Secondary */
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 220 15% 20%;
+    --accent-foreground: 210 40% 95%;
+
+    /* Safety Orange for Alerts */
+    --destructive: 15 90% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success Green for Safe Operations */
+    --success: 145 85% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning Amber */
+    --warning: 45 100% 51%;
+    --warning-foreground: 220 25% 8%;
+
+    /* Control Panel Borders */
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Railway-specific Design Tokens */
+    --rail-orange: 15 90% 55%;
+    --rail-green: 145 85% 45%;
+    --rail-amber: 45 100% 51%;
+    --rail-red: 0 85% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-control: linear-gradient(180deg, hsl(220 20% 12%), hsl(220 25% 8%));
+    --gradient-alert: linear-gradient(135deg, hsl(15 90% 55%), hsl(15 90% 65%));
+    --gradient-success: linear-gradient(135deg, hsl(145 85% 45%), hsl(145 85% 55%));
+
+    /* Shadows */
+    --shadow-control: 0 4px 20px hsl(220 25% 5% / 0.5);
+    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.3);
+    --shadow-alert: 0 0 20px hsl(15 90% 55% / 0.4);
+
+    /* Animations */
+    --transition-control: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-duration: 2s;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Control Panel Components */
+  .control-card {
+    @apply bg-card border border-border rounded-lg shadow-lg;
+    box-shadow: var(--shadow-control);
+  }
+
+  .status-indicator {
+    @apply inline-flex items-center justify-center w-3 h-3 rounded-full;
+    animation: pulse var(--pulse-duration) infinite;
+  }
+
+  .status-safe {
+    @apply bg-green-500;
+    box-shadow: 0 0 10px hsl(var(--success) / 0.5);
+  }
+
+  .status-warning {
+    @apply bg-yellow-500;
+    box-shadow: 0 0 10px hsl(var(--warning) / 0.5);
+  }
+
+  .status-danger {
+    @apply bg-red-500;
+    box-shadow: 0 0 10px hsl(var(--destructive) / 0.5);
+  }
+
+  .train-path {
+    stroke-dasharray: 5,5;
+    animation: train-movement 3s linear infinite;
+  }
+
+  .glow-effect {
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6));
+  }
+
+  .control-button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+    transition: var(--transition-control);
+  }
+
+  .control-button.primary {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground hover:opacity-90;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .control-button.alert {
+    background: var(--gradient-alert);
+    @apply text-destructive-foreground hover:opacity-90;
+    box-shadow: var(--shadow-alert);
+  }
+}
+
+@keyframes train-movement {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 10; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
